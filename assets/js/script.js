@@ -17,3 +17,33 @@ async function fetchVakken() {
         console.error("Er is een fout opgetreden",err);
     }
 }
+
+async function addVakken(vakken) {
+    let input = document.querySelector('#vakInput');
+    let newname = input.value.trim();
+
+    if (newname === ""){
+        alert("Vul een naam in");
+        return;
+    }
+
+    try{
+        let response = await fetch("http://localhost:5688/vakken", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({naam: newname})
+
+        });
+
+        if (response.ok){
+            input.value = "";
+            fetchVakken();
+        }
+    }
+    catch (err){
+        console.error("Er is een fout opgetreden",err);
+
+    }
+}
