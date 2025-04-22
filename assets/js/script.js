@@ -47,3 +47,17 @@ async function addVakken(vakken) {
 
     }
 }
+
+async function deleteVak(id) {
+    try {
+        let response = await fetch(`http://localhost:5688/vakken/${id}`, {
+            method: "DELETE"
+        });
+
+        if (response.ok) {
+            fetchVakken();
+        }
+    } catch (err) {
+        console.error("Er is een fout opgetreden bij het verwijderen:", err);
+    }
+}
