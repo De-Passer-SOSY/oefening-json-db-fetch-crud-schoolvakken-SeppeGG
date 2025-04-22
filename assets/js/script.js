@@ -18,7 +18,7 @@ async function fetchVakken() {
     }
 }
 
-async function addVakken(vakken) {
+async function addVak(vakken) {
     let input = document.querySelector('#vakInput');
     let newname = input.value.trim();
 
@@ -66,9 +66,11 @@ function displayVakken(vakken) {
     let lijst = document.querySelector('#vakList');
     lijst.innerHTML = '';
 
-    vakken.forEach((item) => {
+    vakken.forEach((vak) => {
         let li = document.createElement("li");
         li.textContent = vak.naam;
+
+
 
         let deleteBtn = document.createElement("button");
         deleteBtn.textContent = "❌";
